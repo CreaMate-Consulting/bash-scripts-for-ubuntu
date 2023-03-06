@@ -13,7 +13,7 @@ jobs:
 
       - name: Build index
         run: |
-          ./build/extract_commands.sh
+          bash build/extract_commands.sh
 
       - name: Publish index
         uses: actions/upload-artifact@v2
