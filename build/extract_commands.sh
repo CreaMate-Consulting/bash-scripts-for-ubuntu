@@ -9,7 +9,7 @@ for script in $(find . -type f -name "*.sh"); do
   echo "## $name" >> commands.md
 
   # Suche nach dem Befehl im Skript und schreibe ihn in die Markdown-Datei
-  grep "^# Execute command: " "$script" | sed "s/^# Execute command: /- \`/" | sed "s/\$/\`/" > commands.md
+  grep "^# Execute command: " "$script" | sed "s/^# Execute command: /- \`/" | sed "s/\$/\`/" >> commands.md
 
   # Füge eine Leerzeile zwischen den Skripten hinzu
   echo "" >> commands.md
