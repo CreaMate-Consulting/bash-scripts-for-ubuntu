@@ -1,0 +1,22 @@
+name: Build command index
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build index
+        run: |
+          ./build/extract_commands.sh
+
+      - name: Publish index
+        uses: actions/upload-artifact@v2
+        with:
+          name: commands
+          path: commands.md
