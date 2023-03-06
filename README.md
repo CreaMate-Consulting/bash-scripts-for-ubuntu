@@ -1,5 +1,3 @@
-# bash-scripts-for-ubuntu
-
 # Bash-Skripte und Befehle
 
 <details>
