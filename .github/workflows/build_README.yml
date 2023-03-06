@@ -16,7 +16,7 @@ jobs:
           bash build/extract_commands.sh
 
       - name: Publish index
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.5
         with:
           name: commands
           path: commands.md
