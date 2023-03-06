@@ -8,6 +8,9 @@
 # GitHub URI:     https://github.com/krapas170/
 # License:        GPL v3 or later
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html
+#
+#
+# Execute command:    wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04\Zabbix\zabbix_6.2_ubuntu22.04_server_frontend_agent.sh" && bash zabbix_6.2_ubuntu22.04_server_frontend_agent.sh
 
 # Update system
 apt update

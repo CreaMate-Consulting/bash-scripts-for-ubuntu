@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Name:           zabbix_6.2_ubuntu22.04_agent.sh
-# Description:    This script installs only the agent of Zabbix 6.2 on a Linux Ubuntu 22.04 system.
+# Name:           zabbix_6.2_ubuntu20.04_agent.sh
+# Description:    This script installs only the agent of Zabbix 6.2 on a Linux Ubuntu 20.04 system.
 # Author:         Pascal Kray
 # Author URI:     https://krapas170.github.io/
 # GitHub URI:     https://github.com/krapas170/
@@ -9,7 +9,7 @@
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html
 #
 #
-# Execute command:    wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu%2022.04%20(Jammy)/Zabbix/zabbix_6.2_ubuntu22.04_agent.sh" && bash zabbix_6.2_ubuntu22.04_agent.sh
+# Execute command:    wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/Zabbix/zabbix_6.2_ubuntu20.04_agent.sh" && bash zabbix_6.2_ubuntu20.04_agent.sh
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -17,8 +17,8 @@ GRAY='\033[1;30m'
 NC='\033[0m' # No Color
 
 if [ $(id -u) -ne 0 ]; then
-    printf "${NC}%s${RED}%s${NC}\n" "This script must be run as root. Please enter your password to continue then restart the script with " "bash /root/zabbix_6.2_ubuntu22.04_agent.sh"
-    sudo mv zabbix_6.2_ubuntu22.04_agent.sh /root/zabbix_6.2_ubuntu22.04_agent.sh
+    printf "${NC}%s${RED}%s${NC}\n" "This script must be run as root. Please enter your password to continue then restart the script with " "bash /root/zabbix_6.2_ubuntu20.04_agent.sh"
+    sudo mv zabbix_6.2_ubuntu20.04_agent.sh /root/zabbix_6.2_ubuntu20.04_agent.sh
     sudo "$0" "$@"
     exit
 fi
@@ -60,8 +60,8 @@ apt update
 apt upgrade -y
 
 # Zabbix repository
-wget https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-4%2Bubuntu22.04_all.deb
-dpkg -i zabbix-release_6.2-4+ubuntu22.04_all.deb
+wget https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-4%2Bubuntu20.04_all.deb
+dpkg -i zabbix-release_6.2-4+ubuntu20.04_all.deb
 apt update
 
 # Install Zabbix agent 2
