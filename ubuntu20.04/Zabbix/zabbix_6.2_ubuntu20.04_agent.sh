@@ -3,7 +3,7 @@
 # Name:           zabbix_6.2_ubuntu20.04_agent.sh
 # Description:    This script installs only the agent of Zabbix 6.2 on a Linux Ubuntu 20.04 system.
 # Author:         Pascal Kray
-# Author URI:     https://krapas170.github.io/
+# Author URI:     https://krapas170.de/
 # GitHub URI:     https://github.com/krapas170/
 # License:        GPL v3 or later
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html

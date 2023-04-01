@@ -4,13 +4,13 @@
 # Description:    This script installs the server, frontend, and agent of Zabbix 6.2 on a Linux Ubuntu 22.04 system. 
 #                 Additionally, the script installs and configures Apache, MySQL, and PHP.
 # Author:         Pascal Kray
-# Author URI:     https://krapas170.github.io/
+# Author URI:     https://krapas170.de/
 # GitHub URI:     https://github.com/krapas170/
 # License:        GPL v3 or later
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html
 #
 #
-# Execute command:    wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04\Zabbix\zabbix_6.2_ubuntu22.04_server_frontend_agent.sh" && bash zabbix_6.2_ubuntu22.04_server_frontend_agent.sh
+# Execute command:    wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/Zabbix/zabbix_6.2_ubuntu22.04_server_frontend_agent.sh" && bash zabbix_6.2_ubuntu22.04_server_frontend_agent.sh
 
 # Update system
 apt update
