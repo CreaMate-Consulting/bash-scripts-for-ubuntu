@@ -19,45 +19,42 @@ else
     echo "Apache is already installed."
 fi
 
-# Install required dependencies
-apt-get install -y \
-    libapache2-mod-security2 \
-    libyajl-dev \
-    libxml2-dev \
-    libpcre3-dev \
-    libcurl4-openssl-dev \
-    libgeoip-dev \
-    liblmdb-dev \
-    libjansson-dev \
-    libluajit-5.1-dev \
-    libmaxminddb-dev
+# install Apache and ModSecurity
+apt-get install -y libapache2-mod-security2
 
-# Enable ModSecurity
+# enable ModSecurity module
 a2enmod security2
-a2enmod headers
 
-# Configure ModSecurity
+# restart Apache
+service apache2 restart
+
+# rename ModSecurity config file
 mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
-sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/modsecurity/modsecurity.conf
 
-# Download and configure the OWASP ModSecurity Core Rule Set (CRS)
-apt-get install -y git
-git clone https://github.com/coreruleset/coreruleset.git
-mv coreruleset /usr/share/modsecurity-crs
-mv /usr/share/modsecurity-crs/crs-setup.conf.example /usr/share/modsecurity-crs/crs-setup.conf
+# edit ModSecurity config file
+sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/g' /etc/modsecurity/modsecurity.conf
+sed -i 's/SecAuditLogParts ABDEFHIJZ/SecAuditLogParts ABCEFHJKZ/g' /etc/modsecurity/modsecurity.conf
 
-# Create and configure the ModSecurity Apache configuration file
-bash -c "cat > /etc/apache2/mods-available/security2.conf <<- EOM
-<IfModule security2_module>
-        # Default recommended configuration
-        SecDataDir /var/cache/modsecurity
-        IncludeOptional /etc/modsecurity/*.conf
-        IncludeOptional /usr/share/modsecurity-crs/*.conf
-        IncludeOptional /usr/share/modsecurity-crs/rules/*.conf
-</IfModule>
-EOM"
+# create directory for Core Rule Set files
+mkdir /etc/apache2/modsecurity-crs/
 
-# Restart Apache
-systemctl restart apache2
+# download and extract Core Rule Set
+wget https://github.com/coreruleset/coreruleset/archive/v3.3.0.tar.gz
+tar xvf v3.3.0.tar.gz
+mv coreruleset-3.3.0/ /etc/apache2/modsecurity-crs/
+
+# rename Core Rule Set setup file
+mv /etc/apache2/modsecurity-crs/coreruleset-3.3.0/crs-setup.conf.example /etc/apache2/modsecurity-crs/coreruleset-3.3.0/crs-setup.conf
+
+# edit Apache configuration file to include Core Rule Set
+sed -i '/IncludeOptional \/usr\/share\/modsecurity-crs\/\*.load/d' /etc/apache2/mods-enabled/security2.conf
+echo 'IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/crs-setup.conf' >> /etc/apache2/mods-enabled/security2.conf
+echo 'IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/rules/*.conf' >> /etc/apache2/mods-enabled/security2.conf
+
+# test Apache configuration
+apache2ctl -t
+
+# restart Apache
+service apache2 restart
 
 echo "ModSecurity installation completed."
