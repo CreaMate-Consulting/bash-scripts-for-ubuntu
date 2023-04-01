@@ -59,5 +59,10 @@ apache2ctl -t
 # restart Apache
 service apache2 restart
 
+sleep 10
+
+service apache2 restart
+service apache2 status
+
 echo "ModSecurity installation completed."
 sleep 5
