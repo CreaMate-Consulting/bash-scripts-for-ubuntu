@@ -13,14 +13,14 @@
 # Check if Apache is installed
 if ! dpkg -l | grep apache2 > /dev/null; then
     echo "Apache is not installed. Installing..."
-    sudo apt-get update
-    sudo apt-get install -y apache2
+    apt-get update
+    apt-get install -y apache2
 else
     echo "Apache is already installed."
 fi
 
 # Install required dependencies
-sudo apt-get install -y \
+apt-get install -y \
     libapache2-mod-security2 \
     libyajl-dev \
     libxml2-dev \
@@ -33,21 +33,21 @@ sudo apt-get install -y \
     libmaxminddb-dev
 
 # Enable ModSecurity
-sudo a2enmod security2
-sudo a2enmod headers
+a2enmod security2
+a2enmod headers
 
 # Configure ModSecurity
-sudo mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
-sudo sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/modsecurity/modsecurity.conf
+mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/modsecurity/modsecurity.conf
 
 # Download and configure the OWASP ModSecurity Core Rule Set (CRS)
-sudo apt-get install -y git
+apt-get install -y git
 git clone https://github.com/coreruleset/coreruleset.git
-sudo mv coreruleset /usr/share/modsecurity-crs
-sudo mv /usr/share/modsecurity-crs/crs-setup.conf.example /usr/share/modsecurity-crs/crs-setup.conf
+mv coreruleset /usr/share/modsecurity-crs
+mv /usr/share/modsecurity-crs/crs-setup.conf.example /usr/share/modsecurity-crs/crs-setup.conf
 
 # Create and configure the ModSecurity Apache configuration file
-sudo bash -c "cat > /etc/apache2/mods-available/security2.conf <<- EOM
+bash -c "cat > /etc/apache2/mods-available/security2.conf <<- EOM
 <IfModule security2_module>
         # Default recommended configuration
         SecDataDir /var/cache/modsecurity
@@ -58,6 +58,6 @@ sudo bash -c "cat > /etc/apache2/mods-available/security2.conf <<- EOM
 EOM"
 
 # Restart Apache
-sudo systemctl restart apache2
+systemctl restart apache2
 
 echo "ModSecurity installation completed."
