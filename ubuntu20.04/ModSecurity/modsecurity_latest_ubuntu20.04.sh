@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-# Name:           modsecurity_installer.sh
+# Name:           modsecurity_latest_ubuntu20.04.sh
 # Description:    This script installs ModSecurity on a Linux Ubuntu 20.04 system with Apache.
 # Author:         OpenAI ChatGPT
 # GitHub URI:     https://github.com/openai/
 # License:        GPL v3 or later
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html
 #
-# Execute command: wget "https://raw.githubusercontent.com/your-repo/bash-scripts-for-ubuntu/main/ubuntu%2020.04%20(Focal)/ModSecurity/modsecurity_installer.sh" && bash modsecurity_installer.sh
+# Execute command: wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/ModSecurity/modsecurity_latest_ubuntu20.04.sh" && bash modsecurity_latest_ubuntu20.04.sh
 #
 
 # Check if Apache is installed
