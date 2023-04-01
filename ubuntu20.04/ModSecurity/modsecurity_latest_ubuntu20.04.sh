@@ -13,10 +13,12 @@
 # Check if Apache is installed
 if ! dpkg -l | grep apache2 > /dev/null; then
     echo "Apache is not installed. Installing..."
+    sleep 5
     apt-get update
     apt-get install -y apache2
 else
     echo "Apache is already installed."
+    sleep 5
 fi
 
 # install Apache and ModSecurity
@@ -58,3 +60,4 @@ apache2ctl -t
 service apache2 restart
 
 echo "ModSecurity installation completed."
+sleep 5
