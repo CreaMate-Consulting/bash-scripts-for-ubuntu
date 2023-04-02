@@ -56,9 +56,7 @@ echo 'IncludeOptional /etc/apache2/modsecurity-crs/coreruleset-3.3.0/rules/*.con
 # test Apache configuration
 apache2ctl -t
 
-# restart Apache
-service apache2 restart
-
+# restart Apache after 10 seconds
 sleep 10
 
 service apache2 restart
