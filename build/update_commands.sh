@@ -30,11 +30,32 @@ git checkout -b "$BRANCH_NAME"
 # Run the command extraction and update process (similar to the one in GitHub Actions)
 SCRIPTS_DIR="."
 echo "" > commands.md
-find "$SCRIPTS_DIR" -type f -name "*.sh" | while read -r SCRIPT; do
-  FILENAME=$(grep -oP '(?<=Name:           ).*' "$SCRIPT")
-  EXECUTE_CMD=$(grep -oP '(?<=Execute command: ).*' "$SCRIPT")
-  echo "- **$FILENAME**:" >> commands.md
-  echo "  \`$EXECUTE_CMD\`" >> commands.md
+
+# Find all Ubuntu versions
+for ubuntu_version in $(find . -maxdepth 1 -type d ! -path .); do
+  echo "<details>" >> commands.md
+  echo "  <summary>$ubuntu_version</summary>" >> commands.md
+  echo "" >> commands.md
+
+  # Find all subdirectories in the Ubuntu version directory
+  for subdirectory in $(find "$ubuntu_version" -maxdepth 1 -type d ! -path "$ubuntu_version"); do
+    echo "  ### $(basename "$subdirectory")" >> commands.md
+    echo "" >> commands.md
+
+    # Find all .sh files in the subdirectory and iterate through them
+    find "$subdirectory" -type f -name "*.sh" | while read -r SCRIPT; do
+      # Extract the filename and execute command from each script
+      FILENAME=$(grep -oP '(?<=Name:           ).*' "$SCRIPT")
+      EXECUTE_CMD=$(grep -oP '(?<=Execute command: ).*' "$SCRIPT")
+  
+      # Append the extracted information to commands.md
+      echo "  - **$FILENAME**:" >> commands.md
+      echo "    \`$EXECUTE_CMD\`" >> commands.md
+      echo "" >> commands.md
+    done
+  done
+
+  echo "</details>" >> commands.md
   echo "" >> commands.md
 done
 
