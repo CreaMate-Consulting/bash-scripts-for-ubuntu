@@ -7,7 +7,7 @@
 # License:        GPL v3 or later
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html
 #
-# Execute command: wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/build/update_commands.sh" && bash update_commands.sh
+# Execute command: wget -O update_commands.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/build/update_commands.sh" && bash update_commands.sh
 #
 
 # Set your GitHub username, repository name, and the branch you want to create the pull request
