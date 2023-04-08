@@ -10,7 +10,19 @@
 <details>
   <summary>./.git</summary>
 
-  
+  ### logs
+
+  ### info
+
+  ### refs
+
+  ### branches
+
+  ### hooks
+
+  ### objects
+
+</details>
 
 <details>
   <summary>./ubuntu20.04</summary>
