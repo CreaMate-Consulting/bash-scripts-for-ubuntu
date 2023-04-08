@@ -2,8 +2,8 @@ name: Update Commands
 
 on:
   push:
-    paths:
-      - '**.sh'
+    branches:
+      - main
 
 jobs:
   update-commands:
