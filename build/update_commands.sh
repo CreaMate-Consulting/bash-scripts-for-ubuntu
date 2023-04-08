@@ -38,7 +38,7 @@ for ubuntu_version in $(find . -maxdepth 1 -type d ! -path .); do
   echo "" >> commands.md
 
   # Find all subdirectories in the Ubuntu version directory
-  for subdirectory in $(find "$ubuntu_version" -maxdepth 1 -type d ! -path "$ubuntu_version"); do
+  for subdirectory in $(find "$ubuntu_version" -maxdepth 1 -type d ! -path "$ubuntu_version" ! -name ".git"); do
     echo "  ### $(basename "$subdirectory")" >> commands.md
     echo "" >> commands.md
 
@@ -62,9 +62,6 @@ done
 # Update the README.md file to include the contents of commands.md
 sed -i '/<!-- commands_start -->/,/<!-- commands_end -->/{//!d}' README.md
 sed -i '/<!-- commands_start -->/r commands.md' README.md
-
-# Remove the .git directory from the commands.md file
-sed -i '/<details>/,/<\/details>/ {/<summary>.*.git<\/summary>/!d}' commands.md
 
 # Commit changes and push the new branch
 git config user.email "krapas170@gmail.com"
