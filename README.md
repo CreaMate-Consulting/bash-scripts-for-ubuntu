@@ -1,23 +1,8 @@
 # Bash-Skripte und Befehle
-
-<details>
-  <summary>Klicken Sie hier, um die Liste der verfügbaren Befehle anzuzeigen</summary>
   
   <!-- commands_start -->
 <details>
-  <summary>Klicken Sie hier, um die Liste der verfügbaren Befehle anzuzeigen</summary>
-
-  ### logs
-
-  ### info
-
-  ### refs
-
-  ### branches
-
-  ### hooks
-
-  ### objects
+  <summary>Ubuntu 20</summary>
 
   ### ModSecurity
 
@@ -33,6 +18,10 @@
 
   - **lamp_ubuntu20.04.sh**:
     `wget -O lamp_ubuntu20.04.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/LAMP/lamp_ubuntu20.04.sh" && bash lamp_ubuntu20.04.sh`
+</details>
+  
+<details>
+  <summary>Ubuntu 22</summary>
 
   ### Zabbix
 
@@ -49,5 +38,3 @@
 
 </details>
   <!-- commands_end -->
-
-</details>
