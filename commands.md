@@ -5,8 +5,12 @@
 </details>
 
 <details>
-  <summary>./.git</summary>
-ity_latest_ubuntu20.04.sh" && bash modsecurity_latest_ubuntu20.04.sh`
+  <summary>./ubuntu20.04</summary>
+
+  ### ModSecurity
+
+  - **modsecurity_latest_ubuntu20.04.sh**:
+    `wget -O modsecurity_latest_ubuntu20.04.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/ModSecurity/modsecurity_latest_ubuntu20.04.sh" && bash modsecurity_latest_ubuntu20.04.sh`
 
   ### Zabbix
 
