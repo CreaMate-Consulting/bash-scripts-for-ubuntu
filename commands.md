@@ -14,3 +14,6 @@
 - **zabbix_6.2_ubuntu22.04_agent.sh**:
   `   wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/Zabbix/zabbix_6.2_ubuntu22.04_agent.sh" && bash zabbix_6.2_ubuntu22.04_agent.sh`
 
+- **lamp_ubuntu22.04.sh**:
+  `wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/LAMP/lamp_ubuntu22.04.sh" && bash lamp_ubuntu22.04.sh`
+
