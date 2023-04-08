@@ -34,8 +34,9 @@ jobs:
           done
 
           # Update the README.md file to include the contents of commands.md
-          sed -i '/<!-- commands_start -->/,/<!-- commands_end -->/{//!d}' README.md
-          sed -i '/<!-- commands_start -->/r commands.md' README.md
+          awk '/<!-- commands_start -->/{flag=1; next} /<!-- commands_end -->/{flag=0} !flag' README.md > temp_README.md
+          awk '/<!-- commands_start -->/{print; system("cat commands.md"); next} 1' temp_README.md > README.md
+          rm temp_README.md
 
       - name: Commit changes
         run: |
