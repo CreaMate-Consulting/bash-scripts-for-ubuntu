@@ -2,6 +2,8 @@
 
 <details>
   <summary>Klicken Sie hier, um die Liste der verfügbaren Befehle anzuzeigen</summary>
+  
+  <!-- commands_start -->
+  <!-- commands_end -->
 
-  ```markdown
-  $(curl -s https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/commands.md)
+</details>
