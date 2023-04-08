@@ -7,7 +7,8 @@
 # License:        GPL v3 or later
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html
 #
-# Execute command: wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/LAMP/lamp_ubuntu22.04.sh" && bash lamp_ubuntu22.04.sh
+# Execute command: wget -O update_commands.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/build/update_commands.sh" && bash update_commands.sh
+
 #
 
 # Check if the user running the script is root
