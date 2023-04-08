@@ -9,7 +9,7 @@
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html
 #
 #
-# Execute command:    wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/Zabbix/zabbix_6.2_ubuntu22.04_agent.sh" && bash zabbix_6.2_ubuntu22.04_agent.sh
+# Execute command:    wget -O zabbix_6.2_ubuntu22.04_agent.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/Zabbix/zabbix_6.2_ubuntu22.04_agent.sh" && bash zabbix_6.2_ubuntu22.04_agent.sh
 
 # Check if the user running the script is root
 if [[ $EUID -ne 0 ]]; then
