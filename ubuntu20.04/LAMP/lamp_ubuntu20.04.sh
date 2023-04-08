@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-# Name:           lamp_ubuntu22.04.sh
+# Name:           lamp_ubuntu20.04.sh
 # Description:    This script installs LAMP-Stack (Linux, Apache, MySQL und PHP) on a Linux Ubuntu 20.04 system.
 # Author:         OpenAI ChatGPT
 # GitHub URI:     https://github.com/openai/
 # License:        GPL v3 or later
 # License URI:    https://www.gnu.org/licenses/gpl-3.0.de.html
 #
-# Execute command: wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/LAMP/lamp_ubuntu20.04.sh" && bash lamp_ubuntu20.04.sh
+# Execute command: wget -O lamp_ubuntu20.04.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/LAMP/lamp_ubuntu20.04.sh" && bash lamp_ubuntu20.04.sh
 #
 
 # Check if the user running the script is root
