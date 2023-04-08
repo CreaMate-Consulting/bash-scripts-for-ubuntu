@@ -38,7 +38,7 @@ for ubuntu_version in $(find . -maxdepth 1 -type d ! -path .); do
   echo "" >> commands.md
 
   # Find all subdirectories in the Ubuntu version directory
-  for subdirectory in $(find "$ubuntu_version" -maxdepth 1 -type d ! -path "$ubuntu_version"); do
+  for subdirectory in $(find "$ubuntu_version" -maxdepth 1 -type d ! -path "$ubuntu_version" ! -path "$ubuntu_version/.git"); do
     echo "  ### $(basename "$subdirectory")" >> commands.md
     echo "" >> commands.md
 
