@@ -1,6 +1,3 @@
-# Bash-Skripte und Befehle
-
-  <!-- commands_start -->
 
 <details>
   <summary>./build</summary>
@@ -45,4 +42,3 @@
 
 </details>
 
-  <!-- commands_end -->
