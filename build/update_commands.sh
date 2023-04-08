@@ -10,15 +10,6 @@
 # Execute command: wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/build/update_commands.sh" && bash update_commands.sh
 #
 
-# Check if the user running the script is root
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root"
-   exit 1
-fi
-
-#Update package list
-apt update
-
 # Set your GitHub username, repository name, and the branch you want to create the pull request
 GITHUB_USERNAME="CreaMate-Consulting"
 REPO_NAME="bash-scripts-for-ubuntu"
