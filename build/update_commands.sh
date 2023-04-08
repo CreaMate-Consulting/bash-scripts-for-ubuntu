@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Name:           update_commands.sh
-# Description:    This script clones a GitHub repository, updates the commands.md and README.md files with the latest information from .sh scripts in the repository, and creates a pull request with the changes. It checks if the 'bash-scripts-for-ubuntu' directory exists and removes it before cloning the repository. If there are no changes, the script will not create a pull request.
+# Description:    This script clones a GitHub repository, updates the commands.md and README.md files with the latest information from .sh scripts in the repository, and creates a pull request with the changes. It checks if the 'bash-scrip>
 # Author:         OpenAI ChatGPT
 # GitHub URI:     https://github.com/openai/
 # License:        GPL v3 or later
@@ -32,13 +32,13 @@ SCRIPTS_DIR="."
 echo "" > commands.md
 
 # Find all Ubuntu versions
-for ubuntu_version in $(find . -maxdepth 1 -type d ! -path .); do
+for ubuntu_version in $(find . -maxdepth 1 -type d ! -path . ! -name ".git" ! -path ".git"); do
   echo "<details>" >> commands.md
   echo "  <summary>$ubuntu_version</summary>" >> commands.md
   echo "" >> commands.md
 
   # Find all subdirectories in the Ubuntu version directory
-  for subdirectory in $(find "$ubuntu_version" -maxdepth 1 -type d ! -path "$ubuntu_version" ! -name ".git"); do
+  for subdirectory in $(find "$ubuntu_version" -maxdepth 1 -type d ! -path "$ubuntu_version" ! -path ".git"); do
     echo "  ### $(basename "$subdirectory")" >> commands.md
     echo "" >> commands.md
 
