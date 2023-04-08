@@ -61,7 +61,7 @@ done
 
 # Update the README.md file to include the contents of commands.md
 sed -i '/<!-- commands_start -->/,/<!-- commands_end -->/{//!d}' README.md
-sed -i '/<!-- commands_start -->/r <(grep -v "^/\.git$" commands.md)' README.md
+sed -i "/<!-- commands_start -->/r $(grep -v "^/\.git$" commands.md)" README.md
 
 # Commit changes and push the new branch
 git config user.email "krapas170@gmail.com"
