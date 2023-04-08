@@ -1,24 +1,29 @@
 #!/bin/bash
 
-# Suche nach Bash-Skripten im Repository und extrahiere Befehle
-for script in $(find . -type f -name "*.sh"); do
-  # Extrahiere den Skriptnamen aus dem Pfad
-  name=$(basename "$script" .sh)
+# Find all .sh files in the repository
+sh_files=$(find . -type f -name "*.sh")
 
-  # Schreibe den Skriptnamen in die Markdown-Datei
-  echo "## $name" >> commands.md
+# Remove existing commands.md file
+rm -f commands.md
 
-  # Suche nach dem Befehl im Skript und schreibe ihn in die Markdown-Datei
-  grep "^# Execute command: " "$script" | sed "s/^# Execute command: /- \`/" | sed "s/\$/\`/" >> commands.md
+# Loop through each file and extract commands
+for file in $sh_files
+do
+  # Get the script name
+  script_name=$(grep -Po '(?<=^# Name:\s{11})(.*)' "$file")
 
-  # Füge eine Leerzeile zwischen den Skripten hinzu
+  # Print script name to commands.md
+  echo "# $script_name" >> commands.md
+  echo "" >> commands.md
+
+  # Extract commands and print to commands.md
+  commands=$(grep -Po '(?<=^# Execute command:\s{4}).*' "$file")
+  echo "Command:" >> commands.md
+  echo "\`\`\`" >> commands.md
+  echo "$commands" >> commands.md
+  echo "\`\`\`" >> commands.md
   echo "" >> commands.md
 done
 
-# Gebe die extrahierten Befehle aus
-echo "Extrahierte Befehle:"
+# Display the extracted commands
 cat commands.md
-
-# Lade die Markdown-Datei als Artefakt hoch
-echo "Lade commands.md als Artefakt hoch..."
-echo "::set-output name=command-file::commands.md"
