@@ -1,7 +1,4 @@
 
-- ****:
-  ``
-
 - **modsecurity_latest_ubuntu20.04.sh**:
   `wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/ModSecurity/modsecurity_latest_ubuntu20.04.sh" && bash modsecurity_latest_ubuntu20.04.sh`
 
