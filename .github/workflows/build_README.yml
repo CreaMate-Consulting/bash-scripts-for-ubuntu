@@ -9,21 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Build index
         run: |
-          bash build/extract_commands.sh
-          jq -n 'reduce ( input | split("\n") | .[] ) as $line ({}; .[$line|split(": ")[0]] = $line|split(": ")[1])' < commands.md > commands.json
+          bash build/extract_commands.sh > commands.txt
+
+      - name: Show output
+        run: |
+          cat commands.txt
 
       - name: Publish index
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: commands
-          path: commands.md
-
-      - name: Publish JSON
-        uses: actions/upload-artifact@v3
-        with:
-          name: commands-json
-          path: commands.json
+          path: commands.txt
