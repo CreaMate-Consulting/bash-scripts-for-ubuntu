@@ -11,6 +11,15 @@
 #
 # Execute command:    wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/Zabbix/zabbix_6.2_ubuntu20.04_agent.sh" && bash zabbix_6.2_ubuntu20.04_agent.sh
 
+# Check if the user running the script is root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root"
+   exit 1
+fi
+
+#Update package list
+apt update
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 GRAY='\033[1;30m'
