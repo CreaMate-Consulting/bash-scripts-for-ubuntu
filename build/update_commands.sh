@@ -60,7 +60,8 @@ for ubuntu_version in $(find . -maxdepth 1 -type d ! -path .); do
 done
 
 # Update the README.md file to include the contents of commands.md
-grep -v "^/\.git$" commands.md | sed -e '/<!-- commands_start -->/,/<!-- commands_end -->/{//!d; /<!-- commands_end -->/a\'; r /dev/stdin' -e '}' README.md
+sed -i '/<!-- commands_start -->/,/<!-- commands_end -->/{//!d}' README.md
+sed -i '/<!-- commands_start -->/r commands.md' README.md
 
 # Commit changes and push the new branch
 git config user.email "krapas170@gmail.com"
