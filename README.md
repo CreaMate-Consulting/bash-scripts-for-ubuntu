@@ -7,7 +7,7 @@
 
 - **update_commands.sh
 ).*' "$SCRIPT")**:
-  `wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/build/update_commands.sh" && bash update_commands.sh
+  `wget -O update_commands.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/build/update_commands.sh" && bash update_commands.sh
 ).*' "$SCRIPT")`
 
 - **modsecurity_latest_ubuntu20.04.sh**:
