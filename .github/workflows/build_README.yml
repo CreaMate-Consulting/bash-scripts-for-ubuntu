@@ -14,9 +14,16 @@ jobs:
       - name: Build index
         run: |
           bash build/extract_commands.sh
+          jq -n 'reduce ( input | split("\n") | .[] ) as $line ({}; .[$line|split(": ")[0]] = $line|split(": ")[1])' < commands.md > commands.json
 
       - name: Publish index
         uses: actions/upload-artifact@v3
         with:
           name: commands
           path: commands.md
+
+      - name: Publish JSON
+        uses: actions/upload-artifact@v3
+        with:
+          name: commands-json
+          path: commands.json
