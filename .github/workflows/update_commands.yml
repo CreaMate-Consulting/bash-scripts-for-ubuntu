@@ -1,0 +1,45 @@
+name: Update Commands
+
+on:
+  push:
+    paths:
+      - '**.sh'
+
+jobs:
+  update-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Extract and update commands
+        run: |
+          # Set the directory containing the scripts
+          SCRIPTS_DIR="."
+
+          # Create or empty the commands.md file
+          echo "" > commands.md
+
+          # Find all .sh files in the repository and iterate through them
+          find "$SCRIPTS_DIR" -type f -name "*.sh" | while read -r SCRIPT; do
+            # Extract the filename and execute command from each script
+            FILENAME=$(grep -oP '(?<=Name:           ).*' "$SCRIPT")
+            EXECUTE_CMD=$(grep -oP '(?<=Execute command: ).*' "$SCRIPT")
+
+            # Append the extracted information to commands.md
+            echo "- **$FILENAME**:" >> commands.md
+            echo "  \`$EXECUTE_CMD\`" >> commands.md
+            echo "" >> commands.md
+          done
+
+          # Update the README.md file to include the contents of commands.md
+          sed -i '/<!-- commands_start -->/,/<!-- commands_end -->/{//!d}' README.md
+          sed -i '/<!-- commands_start -->/r commands.md' README.md
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add commands.md README.md
+          git commit -m "Update commands.md and README.md" || echo "No changes to commit"
+          git push
