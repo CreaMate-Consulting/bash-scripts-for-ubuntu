@@ -20,8 +20,10 @@ if [ -d "$REPO_NAME" ]; then
   rm -rf "$REPO_NAME"
 fi
 
-# Clone the repository
-git clone "https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
+# Clone the repository without the .git folder
+git clone --depth 1 "https://github.com/$GITHUB_USERNAME/$REPO_NAME.git" --branch main --single-branch "$REPO_NAME-tmp"
+mv "$REPO_NAME-tmp/.git" "$REPO_NAME"
+rm -rf "$REPO_NAME-tmp"
 cd "$REPO_NAME"
 
 # Create a new branch
