@@ -10,6 +10,15 @@
 # Execute command: wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu20.04/ModSecurity/modsecurity_latest_ubuntu20.04.sh" && bash modsecurity_latest_ubuntu20.04.sh
 #
 
+# Check if the user running the script is root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root"
+   exit 1
+fi
+
+#Update package list
+apt update
+
 # Check if Apache is installed
 if ! dpkg -l | grep apache2 > /dev/null; then
     echo "Apache is not installed. Installing..."
