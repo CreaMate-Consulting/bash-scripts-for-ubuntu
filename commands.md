@@ -38,7 +38,12 @@
   ### LAMP
 
   - **lamp_ubuntu22.04.sh**:
-    `wget -O update_commands.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/build/update_commands.sh" && bash update_commands.sh`
+    `wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/LAMP/lamp_ubuntu22.04.sh" && bash lamp_ubuntu22.04.sh`
+
+  ### Wireguard
+
+  - **wireguard-client_ubuntu22.04.sh**:
+    `wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/Wireguard/wireguard-client_ubuntu22.04.sh" && bash wireguard-client_ubuntu22.04.sh`
 
 </details>
 
