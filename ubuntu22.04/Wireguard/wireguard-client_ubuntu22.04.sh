@@ -21,13 +21,13 @@ fi
 apt update
 
 # Add the WireGuard PPA
-sudo add-apt-repository ppa:wireguard/wireguard -y
+add-apt-repository ppa:wireguard/wireguard -y
 
 # Update the system
-sudo apt update -y && sudo apt upgrade -y
+apt update -y && sudo apt upgrade -y
 
 # Install WireGuard
-sudo apt install wireguard -y
+apt install wireguard -y
 
 # Generate a new key pair for the client
 umask 077
@@ -38,7 +38,7 @@ read -p "Enter the server's public key: " server_public_key
 read -p "Enter the server's IP address: " server_ip
 
 # Create the WireGuard configuration file
-sudo tee /etc/wireguard/wg0.conf > /dev/null <<EOT
+tee /etc/wireguard/wg0.conf > /dev/null <<EOT
 [Interface]
 PrivateKey = $(cat privatekey)
 Address = 10.0.0.2/24
@@ -51,7 +51,7 @@ PersistentKeepalive = 15
 EOT
 
 # Start the WireGuard client
-sudo wg-quick up wg0
+wg-quick up wg0
 
 # Show the WireGuard interface status
-sudo wg show
+wg show
