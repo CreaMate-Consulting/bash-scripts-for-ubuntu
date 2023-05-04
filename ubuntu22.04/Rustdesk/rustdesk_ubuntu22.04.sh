@@ -20,37 +20,17 @@ fi
 #Update package list
 apt update
 
-# Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# Install Rustdesk over installation script
+wget https://raw.githubusercontent.com/dinger1986/rustdeskinstall/master/install.sh
+chmod +x install.sh
+./install.sh
 
-# Install dependencies
-apt install -y pkg-config libssl-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev libavcodec-dev libavformat-dev libswscale-dev libavdevice-dev libx11-dev libxkbfile-dev
+# The script above is a ready-made and tested script from Rustdesk's Github page. No guarantee that the installation script will work.
 
-# Download Rustdesk
-curl -sSL https://github.com/rustdesk/rustdesk/releases/download/0.6.0/rustdesk-server-0.6.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
 
-# Move files to /opt/rustdesk
-mkdir -p /opt/rustdesk
-mv rustdesk-server-*/* /opt/rustdesk/
 
-# Create a systemd service file
-cat > /etc/systemd/system/rustdesk.service <<EOL
-[Unit]
-Description=Rustdesk server
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/opt/rustdesk/hbbs -r rustdesk.example.com:21116 --ipv6
-Restart=always
-User=root
-Group=root
-
-[Install]
-WantedBy=multi-user.target
-EOL
-
-# Reload systemd and start Rustdesk
-systemctl daemon-reload
-systemctl enable rustdesk
-systemctl start rustdesk
+# Enable and configure Firewall
+ufw allow 21115:21119/tcp
+ufw allow 8000/tcp
+ufw allow 21116/udp
+sudo ufw enable
