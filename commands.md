@@ -35,6 +35,11 @@
   - **zabbix_6.2_ubuntu22.04_agent.sh**:
     `   wget -O zabbix_6.2_ubuntu22.04_agent.sh "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/Zabbix/zabbix_6.2_ubuntu22.04_agent.sh" && bash zabbix_6.2_ubuntu22.04_agent.sh`
 
+  ### Rustdesk
+
+  - **rustdesk_ubuntu22.04.sh**:
+    `wget "https://raw.githubusercontent.com/CreaMate-Consulting/bash-scripts-for-ubuntu/main/ubuntu22.04/Rustdesk/rustdesk_ubuntu22.04.sh" && bash rustdesk_ubuntu22.04.sh`
+
   ### LAMP
 
   - **lamp_ubuntu22.04.sh**:
